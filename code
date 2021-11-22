@@ -1,0 +1,59 @@
+let sec;
+let last_sec = 0;
+let min;
+let hr;
+let mill;
+let mills_since;
+
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	background(275);
+	mill = 0;
+}
+
+function draw() {
+	background(275);
+	
+	fill(100);
+	//noFill();
+	noStroke();
+	
+	textSize(300);
+	
+	
+	sec = second(); 
+	min = minute();
+	hr = hour();
+	
+	// if (millis() - mill > 1000){
+	// 	mill = millis();
+	// }
+	
+	if (second() > last_sec){
+		last_sec = second();
+		mill = millis();
+	}
+	
+	
+	
+	
+	
+	fill(150);
+	text(hr, 300, 250);
+	fill('blue');
+	text(min, 350, 250);
+	//console.log(sec);
+	
+	//ellipse(mouseX, mouseY, 20, 20);
+	fill(0);
+	
+	let x = map(sec,0,59,200,width - 200);
+	ellipse(x,300,75);
+	
+	fill('red');
+	let x2 = map(millis(),mill,mill+1000,200,width - 200);
+	//let x2 = map(mill,0,1000,200,width - 200);
+
+	ellipse(x2,150,60);
+	
+}
